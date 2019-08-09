@@ -10,7 +10,7 @@ if(false === is_dir(COVERAGE_DIRECTORY))
     mkdir(COVERAGE_DIRECTORY, 0777, true);
 }
 
-$script->addTestAllDirectory(__DIR__ . '/test');
+$script->addTestsFromDirectory(__DIR__ . '/test');
 
 $stdOutWriter = new atoum\writers\std\out();
 

@@ -16,7 +16,11 @@ class XsdPartialNodeGenerator extends atoum\test
             ->then
                 ->object($object)
                     ->isInstanceOf('RomaricDrigon\\MetaYaml\\XsdNodeGenerator\\XsdPartialNodeGenerator')
-                ->exception(function() use ($object) { $object->build('test', array('_partial' => 'nom_partial'),  new \XMLWriter(), false); })
+                    ->exception(function() use ($object) {
+                      $writer = new \XMLWriter();
+                      $schema = array('_partial' => 'nom_partial');
+                      $object->build('test', $schema, $writer , false);
+                    })
                     ->hasMessage("You're using a partial but partial 'nom_partial' is not defined in your schema")
         ;
     }
