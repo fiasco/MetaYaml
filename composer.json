@@ -8,6 +8,9 @@
     "autoload": {
         "psr-0": {
             "RomaricDrigon\\MetaYaml": "src/"
+        },
+        "psr-4": {
+          "Fiasco/MetaYaml": "src/"
         }
     },
     "conflict": {
