@@ -15,20 +15,18 @@ class SchemaElement {
 
   public function getChildren()
   {
-    $children = array_filter($this->element, function ($key) {
-      return substr($key, 0, 1) != '_';
-    }, ARRAY_FILTER_USE_KEY);
-
-    foreach ($children as &$child) {
-      $child = new static($child, $this);
+    foreach ($this->getAttribute('children') as $child) {
+      yield new static($child, $this);
     }
-
-    return $children;
   }
 
   public function getChild($key)
   {
-    return isset($this->element[$key]) ? new static($this->element[$key], $this) : FALSE;
+    if (!isset($this->element['_children'][$key])) {
+      $children = array_keys($this->getChildren());
+      throw new \Exception("Could not find child '$key' in (" . implode(', ', $children) . ")");
+    }
+    return new static($this->element['_children'][$key], $this);
   }
 
   public function getAttributes()
