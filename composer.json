@@ -7,10 +7,10 @@
     "license": "MIT",
     "autoload": {
         "psr-0": {
-            "RomaricDrigon\\MetaYaml": "src/"
+            "RomaricDrigon\\MetaYaml\\": "src/"
         },
         "psr-4": {
-          "Fiasco/MetaYaml": "src/"
+          "Fiasco\\MetaYaml\\": "src/"
         }
     },
     "conflict": {
